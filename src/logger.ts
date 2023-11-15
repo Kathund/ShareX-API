@@ -49,7 +49,7 @@ const apiLogger = createLogger({
     format.timestamp({ format: timezone }),
     format.printf(({ timestamp, level, message }) => {
       return `[${timestamp}] ${level.toUpperCase()} > ${message}`;
-    })
+    }),
   ),
   transports: [apiTransport, combinedTransport, consoleTransport],
 });
@@ -61,7 +61,7 @@ const errorLogger = createLogger({
     format.timestamp({ format: timezone }),
     format.printf(({ timestamp, level, message }) => {
       return `[${timestamp}] ${level.toUpperCase()} > ${message}`;
-    })
+    }),
   ),
   transports: [errorTransport, combinedTransport, consoleTransport],
 });
@@ -73,7 +73,7 @@ const warnLogger = createLogger({
     format.timestamp({ format: timezone }),
     format.printf(({ timestamp, level, message }) => {
       return `[${timestamp}] ${level.toUpperCase()} > ${message}`;
-    })
+    }),
   ),
   transports: [warnTransport, combinedTransport, consoleTransport],
 });
@@ -85,7 +85,7 @@ const otherLogger = createLogger({
     format.timestamp({ format: timezone }),
     format.printf(({ timestamp, level, message }) => {
       return `[${timestamp}] ${level.toUpperCase()} > ${message}`;
-    })
+    }),
   ),
   transports: [otherTransport, combinedTransport, consoleTransport],
 });

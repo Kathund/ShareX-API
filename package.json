@@ -5,8 +5,8 @@
   "main": "index.ts",
   "scripts": {
     "start": "npx ts-node index.ts",
-    "prettier": "npx prettier --write src/ index.ts",
-    "prettier:check": "npx prettier --check src/ index.ts",
+    "prettier": "npx prettier --write .",
+    "prettier:check": "npx prettier --check .",
     "compile": "npx tsc"
   },
   "keywords": [],
