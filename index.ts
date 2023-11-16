@@ -17,7 +17,7 @@ try {
 
   app.post("/save/:name", async (req: Request, res: Response) => {
     try {
-      const apiKey = req.headers["api-key"];
+      const apiKey = req.headers["API-KEY"];
       if (apiKey !== key) {
         errorMessage("Invalid API key provided");
         return res

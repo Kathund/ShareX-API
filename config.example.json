@@ -1,1 +1,5 @@
-{ "PORT": 3000, "url": "http://localhost:3000", "key": "test" }
+{
+  "PORT": 3000,
+  "url": "URL_OF_THE_CDN",
+  "key": "API_KEY"
+}
