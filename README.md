@@ -47,7 +47,7 @@ npm start
 To setup your new ShareX API and make it work with ShareX you will need to do the following:
 
 1. Open [ShareX](https://getsharex.com) and then on the right go to `Destinations` and then click on `Custom uploader settings`.
-![Going to the custom uploader settings](.github/readme/assets/ShareX_Setup_CustomUploader_Settings.png)
+   ![Going to the custom uploader settings](.github/readme/assets/ShareX_Setup_CustomUploader_Settings.png)
 2. Copy the default config from the code block below
 
 ```json
