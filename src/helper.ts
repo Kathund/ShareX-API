@@ -1,11 +1,12 @@
-import { otherMessage, errorMessage } from './logger';
-import { readdirSync, statSync } from 'fs';
-import { Application } from 'express';
-import { join } from 'path';
+import { otherMessage, errorMessage } from "./logger";
+import { readdirSync, statSync } from "fs";
+import { Application } from "express";
+import { basename, join } from "path";
 
 export const loadEndpoints = (directory: string, app: Application) => {
   try {
     const items = readdirSync(directory);
+    console.log(items);
 
     let skipped = 0;
     let loaded = 0;
@@ -19,16 +20,15 @@ export const loadEndpoints = (directory: string, app: Application) => {
           skipped += result.skipped;
           loaded += result.loaded;
         }
-      } else if (item.toLowerCase().endsWith('.ts')) {
-        if (item.toLowerCase().includes('disabled')) {
+      } else if (item.toLowerCase().endsWith(".ts")) {
+        if (item.toLowerCase().includes("disabled")) {
           skipped++;
           continue;
         }
         loaded++;
-        // eslint-disable-next-line
         const route = require(itemPath).default;
         route(app);
-        otherMessage(`Loaded ${itemPath.split('/src/endpoints/')[1].split('.ts')[0]} endpoint`);
+        otherMessage(`Loaded ${basename(itemPath).split(".ts")[0]} endpoint`);
       }
     }
     return { loaded, skipped };

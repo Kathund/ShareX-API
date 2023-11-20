@@ -6,7 +6,7 @@ import { PORT } from "./config.json";
 import express from "express";
 import { join } from "path";
 
-const filesDir = join(__dirname, "src",  "files");
+const filesDir = join(__dirname, "src", "files");
 if (!existsSync(filesDir)) {
   mkdirSync(filesDir);
 }
@@ -20,7 +20,7 @@ try {
   const result = loadEndpoints(endpointsDir, app);
   if (result !== undefined) {
     otherMessage(
-      `Loaded ${result.loaded} endpoints, skipped ${result.skipped} endpoints`
+      `Loaded ${result.loaded} endpoints, skipped ${result.skipped} endpoints`,
     );
   } else {
     otherMessage(`No endpoints found in ${endpointsDir}`);
