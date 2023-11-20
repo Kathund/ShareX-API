@@ -27,6 +27,23 @@ jobs:
       - name: prettier
         run: npm run prettier:check
 
+  eslint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Git checkout
+        uses: actions/checkout@v4
+
+      - name: Use Node.js ${{ env.NODE_VERSION }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+
+      - name: Install node dependencies
+        run: npm i
+
+      - name: eslint
+        run: npm run lint:check
+
   compile:
     runs-on: ubuntu-latest
     steps:
