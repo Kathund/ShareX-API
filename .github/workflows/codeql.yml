@@ -12,6 +12,11 @@
 #
 name: 'CodeQL'
 
+output:
+    description: The path of the directory in which to save the SARIF results
+    required: false
+    default: "../results"
+
 on:
   push:
     branches: ['main']
