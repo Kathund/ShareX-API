@@ -22,7 +22,11 @@ export default (app: Application) => {
       }
 
       const fileName = req.params.name;
-      const filePath = join(__dirname, '../', 'files', fileName);
+      const fileNamePattern = /^[a-zA-Z0-9_-]+$/;
+      if (!fileNamePattern.test(fileName)) {
+        return res.status(400).json({ error: "Invalid file name" });
+      }
+      const filePath = join(__dirname, "../", "files", fileName);
       if (existsSync(filePath)) {
         errorMessage(`File ${fileName} already exists`);
         return res.status(400).json({ sucsess: false, message: `File ${fileName} already exists` });
