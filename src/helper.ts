@@ -1,7 +1,7 @@
-import { otherMessage, errorMessage } from "./logger";
-import { readdirSync, statSync } from "fs";
-import { Application } from "express";
-import { basename, join } from "path";
+import { otherMessage, errorMessage } from './logger';
+import { readdirSync, statSync } from 'fs';
+import { Application } from 'express';
+import { basename, join } from 'path';
 
 export const loadEndpoints = (directory: string, app: Application) => {
   try {
@@ -19,8 +19,8 @@ export const loadEndpoints = (directory: string, app: Application) => {
           skipped += result.skipped;
           loaded += result.loaded;
         }
-      } else if (item.toLowerCase().endsWith(".ts")) {
-        if (item.toLowerCase().includes("disabled")) {
+      } else if (item.toLowerCase().endsWith('.ts')) {
+        if (item.toLowerCase().includes('disabled')) {
           skipped++;
           continue;
         }
@@ -28,7 +28,7 @@ export const loadEndpoints = (directory: string, app: Application) => {
           loaded++;
           const route = await import(itemPath);
           route(app);
-          otherMessage(`Loaded ${basename(itemPath).split(".ts")[0]} endpoint`);
+          otherMessage(`Loaded ${basename(itemPath).split('.ts')[0]} endpoint`);
         })();
       }
     }
