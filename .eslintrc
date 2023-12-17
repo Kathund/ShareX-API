@@ -4,12 +4,16 @@
     "es2021": true,
     "node": true
   },
-  "extends": ["plugin:@typescript-eslint/recommended", "eslint:recommended", "plugin:import/recommended"],
+  "extends": [
+    "plugin:@typescript-eslint/recommended",
+    "eslint:recommended",
+    "plugin:import/recommended"
+  ],
   "parserOptions": { "ecmaVersion": "latest" },
   "overrides": [],
   "rules": {
-    "no-constant-condition": ["error", { "checkLoops": false }],    
-    "curly": [ "error", "multi-line", "consistent" ],
+    "no-constant-condition": ["error", { "checkLoops": false }],
+    "curly": ["error", "multi-line", "consistent"],
     "@typescript-eslint/no-explicit-any": "off",
     "no-template-curly-in-string": "error",
     "no-use-before-define": "error",
