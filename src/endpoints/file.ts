@@ -1,7 +1,7 @@
-import { Application, Request, Response } from "express";
-import { apiMessage, errorMessage } from "../logger";
-import { existsSync } from "fs";
-import { resolve } from "path";
+import { Application, Request, Response } from 'express';
+import { apiMessage, errorMessage } from '../logger';
+import { existsSync } from 'fs';
+import { resolve } from 'path';
 
 export default (app: Application) => {
   app.get('/:name', async (req: Request, res: Response) => {
@@ -10,9 +10,9 @@ export default (app: Application) => {
       apiMessage(req.path, `User is trying to get a file - ${fileName}`);
       const fileNamePattern = /^[a-zA-Z0-9_-]+$/;
       if (!fileNamePattern.test(fileName)) {
-        return res.status(400).json({ error: "Invalid file name" });
+        return res.status(400).json({ error: 'Invalid file name' });
       }
-      const filePath = resolve(__dirname, "../", "files", fileName);
+      const filePath = resolve(__dirname, '../', 'files', fileName);
       if (!existsSync(filePath)) {
         errorMessage(`File ${fileName} not found`);
         return res.status(404).send({ sucsess: false, message: `File ${fileName} not found` });
