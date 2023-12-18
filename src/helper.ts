@@ -6,10 +6,8 @@ import { basename, join } from 'path';
 export const loadEndpoints = (directory: string, app: Application) => {
   try {
     const items = readdirSync(directory);
-
     let skipped = 0;
     let loaded = 0;
-
     for (const item of items) {
       const itemPath = join(directory, item);
       const stats = statSync(itemPath);

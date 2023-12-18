@@ -17,7 +17,6 @@ export default (app: Application) => {
         errorMessage(`File ${fileName} not found`);
         return res.status(404).send({ sucsess: false, message: `File ${fileName} not found` });
       }
-
       apiMessage(req.path, `File ${fileName} found`);
       return res.sendFile(filePath);
     } catch (err) {

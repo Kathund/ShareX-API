@@ -14,13 +14,11 @@ export default (app: Application) => {
         return res.status(400).send({ sucsess: false, message: 'Invalid API key' });
       }
       apiMessage(req.path, 'User is trying to save a file');
-
       const file = req.files?.file as UploadedFile;
       if (!file) {
         errorMessage('No file provided for upload');
         return res.status(400).send({ sucsess: false, message: 'No file provided' });
       }
-
       const fileName = req.params.name;
       const fileNamePattern = /^[a-zA-Z0-9_-]+$/;
       if (!fileNamePattern.test(fileName)) {
@@ -31,14 +29,9 @@ export default (app: Application) => {
         errorMessage(`File ${fileName} already exists`);
         return res.status(400).json({ sucsess: false, message: `File ${fileName} already exists` });
       }
-
       await file.mv(filePath);
-
       apiMessage(req.path, `File ${fileName} saved successfully`);
-      return res.status(200).json({
-        sucsess: true,
-        message: `File has been saved at ${url}/${fileName}`,
-      });
+      return res.status(200).json({ sucsess: !0, message: `File has been saved at ${url}/${fileName}` });
     } catch (err) {
       errorMessage(err as string);
       return res.status(500).json({ sucsess: false, message: 'Internal server error' });

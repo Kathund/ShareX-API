@@ -12,10 +12,8 @@ if (!existsSync(filesDir)) {
 }
 
 const app = express();
-
 try {
   app.use(fileUpload());
-
   const endpointsDir = join(__dirname, 'src', 'endpoints');
   const result = loadEndpoints(endpointsDir, app);
   if (result !== undefined) {
@@ -23,7 +21,6 @@ try {
   } else {
     otherMessage(`No endpoints found in ${endpointsDir}`);
   }
-
   app.listen(PORT, () => {
     otherMessage(`Server started on port ${PORT} @ http://localhost:${PORT}`);
   });

@@ -13,34 +13,12 @@ const timezone = () => {
   });
 };
 
-const apiTransport = new transports.File({
-  level: 'api',
-  filename: './logs/api.log',
-});
-
-const errorTransport = new transports.File({
-  level: 'error',
-  filename: './logs/error.log',
-});
-
-const warnTransport = new transports.File({
-  level: 'warn',
-  filename: './logs/warn.log',
-});
-
-const otherTransport = new transports.File({
-  level: 'other',
-  filename: './logs/other.log',
-});
-
-const combinedTransport = new transports.File({
-  level: 'max',
-  filename: './logs/combined.log',
-});
-
-const consoleTransport = new transports.Console({
-  level: 'max',
-});
+const apiTransport = new transports.File({ level: 'api', filename: './logs/api.log' });
+const errorTransport = new transports.File({ level: 'error', filename: './logs/error.log' });
+const warnTransport = new transports.File({ level: 'warn', filename: './logs/warn.log' });
+const otherTransport = new transports.File({ level: 'other', filename: './logs/other.log' });
+const combinedTransport = new transports.File({ level: 'max', filename: './logs/combined.log' });
+const consoleTransport = new transports.Console({ level: 'max' });
 
 const apiLogger = createLogger({
   level: 'api',
@@ -89,6 +67,7 @@ const otherLogger = createLogger({
   ),
   transports: [otherTransport, combinedTransport, consoleTransport],
 });
+
 const logger = {
   api: (endPoint: string, message: string) => {
     apiLogger.log('api', `${endPoint} | ${message}`);
