@@ -1,6 +1,6 @@
 <h1 align="center">ShareX-API</h1>
 
-<h2 align="center">API Thats designed for use with ShareX to upload your files to a webserver.</h2>
+<h2 align="center">API Thats designed for use with ShareX to upload your files to a web server.</h2>
 
 This ShareX-API is designed to use the Custom Uploader feature that is build into ShareX. This API is designed to be used as a cdn for your files. The API is built using Express for the backend.
 
@@ -35,7 +35,7 @@ git clone https://github.com/Kathund/ShareX-API.git
 npm install
 ```
 
-3. Setup Config by renamming the `config.example.json` to `config.json` and filling in the required information.
+3. Setup Config by renaming the `config.example.json` to `config.json` and filling in the required information.
 4. Start the API by running the following command:
 
 ```bash
@@ -58,7 +58,7 @@ To setup your new ShareX API and make it work with ShareX you will need to do th
   "RequestMethod": "POST",
   "RequestURL": "URL_OF_THE_CDN/save/{filename}",
   "Headers": {
-    "API-KEY": "API_KEY"
+    "api-key": "API_KEY"
   },
   "Body": "MultipartFormData",
   "FileFormName": "files[]",
