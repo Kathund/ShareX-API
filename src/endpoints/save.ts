@@ -13,7 +13,6 @@ export default (app: Application) => {
         return res.status(400).send({ success: false, message: 'Invalid API key' });
       }
       apiMessage(req.path, 'User is trying to save a file');
-      errorMessage((req.files as any).file);
       const file = (req.files as any).file;
       if (!file) {
         errorMessage('No file provided for upload');
