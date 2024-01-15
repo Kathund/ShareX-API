@@ -11,16 +11,18 @@ if (!existsSync('./src/files')) {
 
 const app = express();
 try {
-  app.use(fileUpload());
-  const result = loadEndpoints(app);
-  if (result !== undefined) {
-    otherMessage(`Loaded ${result.loaded} endpoints`);
-  } else {
-    otherMessage('No endpoints found');
-  }
-  app.listen(PORT, () => {
-    otherMessage(`Server started on port ${PORT} @ http://localhost:${PORT}`);
-  });
+  (async () => {
+    app.use(fileUpload());
+    const result = await loadEndpoints(app);
+    if (result !== undefined) {
+      otherMessage(`Loaded ${result} endpoints`);
+    } else {
+      otherMessage('No endpoints found');
+    }
+    app.listen(PORT, () => {
+      otherMessage(`Server started on port ${PORT} @ http://localhost:${PORT}`);
+    });
+  })();
 } catch (error) {
   errorMessage(`Error starting server: ${error}`);
 }
