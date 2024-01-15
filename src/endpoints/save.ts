@@ -10,14 +10,14 @@ export default (app: Application) => {
       const apiKey = req.headers['api-key'];
       if (apiKey !== key) {
         errorMessage('Invalid API key provided');
-        return res.status(400).send({ sucsess: false, message: 'Invalid API key' });
+        return res.status(400).send({ success: false, message: 'Invalid API key' });
       }
       apiMessage(req.path, 'User is trying to save a file');
       errorMessage((req.files as any).file);
       const file = (req.files as any).file;
       if (!file) {
         errorMessage('No file provided for upload');
-        return res.status(400).send({ sucsess: false, message: 'No file provided' });
+        return res.status(400).send({ success: false, message: 'No file provided' });
       }
       const fileName = req.params.name;
       const fileNamePattern = /^[a-zA-Z0-9_-]+\.[a-zA-Z0-9]+$/;
@@ -32,7 +32,7 @@ export default (app: Application) => {
       const filePath = resolve(dir, fileName);
       if (existsSync(filePath)) {
         errorMessage(`File ${fileName} already exists`);
-        return res.status(400).json({ sucsess: false, message: `File ${fileName} already exists` });
+        return res.status(400).json({ success: false, message: `File ${fileName} already exists` });
       }
       try {
         await file.mv(filePath);
@@ -40,11 +40,10 @@ export default (app: Application) => {
         errorMessage(`Error moving file: ${err}`);
         return res.status(500).json({ success: false, message: 'Error occurred while saving the file' });
       }
-      console.log(`File ${fileName} has been saved`);
-      return res.status(200).json({ sucsess: !0, message: `File has been saved at ${url}/${fileName}` });
+      return res.status(200).json({ success: !0, message: `File has been saved at ${url}/${fileName}` });
     } catch (err) {
       errorMessage(err as string);
-      return res.status(500).json({ sucsess: false, message: 'Internal server error' });
+      return res.status(500).json({ success: false, message: 'Internal server error' });
     }
   });
 };

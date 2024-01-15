@@ -20,13 +20,13 @@ export default (app: Application) => {
       const filePath = resolve(dir, fileName);
       if (!existsSync(filePath)) {
         errorMessage(`File ${fileName} dosent exists`);
-        return res.status(400).json({ sucsess: false, message: `File ${fileName} dosent exist` });
+        return res.status(400).json({ success: false, message: `File ${fileName} dosent exist` });
       }
       apiMessage(req.path, `File ${fileName} found`);
       return res.sendFile(filePath);
     } catch (err) {
       errorMessage(err as string);
-      return res.status(500).send({ sucsess: false, message: 'Internal server error' });
+      return res.status(500).send({ success: false, message: 'Internal server error' });
     }
   });
 };

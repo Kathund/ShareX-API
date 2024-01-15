@@ -1,7 +1,6 @@
 import { otherMessage, errorMessage } from './logger';
-import { readdirSync, statSync } from 'fs';
 import { Application } from 'express';
-import { basename, join } from 'path';
+import { readdirSync } from 'fs';
 
 export const loadEndpoints = (app: Application) => {
   try {
