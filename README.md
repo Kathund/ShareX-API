@@ -63,6 +63,8 @@ To setup your new ShareX API and make it work with ShareX you will need to do th
   "Body": "MultipartFormData",
   "FileFormName": "file",
   "URL": "{json:url}",
+  "DeletionURL": "{json:delete}",
+  "ErrorMessage": "{json:message}"
 }
 ```
 

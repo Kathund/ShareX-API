@@ -40,7 +40,14 @@ export default (app: Application) => {
         return res.status(500).json({ success: false, message: 'Error occurred while saving the file' });
       }
       apiMessage(req.path, `File ${fileName} has been saved`);
-      return res.status(200).json({ success: true, message: `File has been saved at ${url}/${fileName}` });
+      return res
+        .status(200)
+        .json({
+          success: true,
+          message: `File has been saved at ${url}/${fileName}`,
+          url: `${url}/${fileName}`,
+          delete: `${url}/delete/${fileName}`,
+        });
     } catch (err) {
       errorMessage(err as string);
       return res.status(500).json({ success: false, message: 'Internal server error' });
