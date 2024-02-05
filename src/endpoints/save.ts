@@ -1,8 +1,9 @@
 import { Application, Request, Response } from 'express';
 import { apiMessage, errorMessage } from '../logger';
-import { url, key } from '../../config.json';
+import { url, key, nameHide } from '../../config.json';
 import { existsSync, mkdirSync } from 'fs';
 import { resolve, dirname } from 'path';
+import { generateID } from '../helper';
 
 export default (app: Application) => {
   app.post('/save/:name', async (req: Request, res: Response) => {
@@ -18,7 +19,7 @@ export default (app: Application) => {
         errorMessage('No file provided for upload');
         return res.status(400).send({ success: false, message: 'No file provided' });
       }
-      const fileName = req.params.name;
+      const fileName = nameHide ? `${generateID(10)}.${req.params.name.split('.')[1]}` : req.params.name;
       const fileNamePattern = /^[a-zA-Z0-9_-]+\.[a-zA-Z0-9]+$/;
       if (!fileNamePattern.test(fileName)) {
         return res.status(400).json({ error: 'Invalid file name' });
@@ -39,7 +40,7 @@ export default (app: Application) => {
         return res.status(500).json({ success: false, message: 'Error occurred while saving the file' });
       }
       apiMessage(req.path, `File ${fileName} has been saved`);
-      return res.status(200).json({ success: !0, message: `File has been saved at ${url}/${fileName}` });
+      return res.status(200).json({ success: true, message: `File has been saved at ${url}/${fileName}` });
     } catch (err) {
       errorMessage(err as string);
       return res.status(500).json({ success: false, message: 'Internal server error' });

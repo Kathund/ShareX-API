@@ -61,8 +61,8 @@ To setup your new ShareX API and make it work with ShareX you will need to do th
     "api-key": "API_KEY"
   },
   "Body": "MultipartFormData",
-  "FileFormName": "files[]",
-  "URL": "URL_OF_THE_CDN/{json:name}"
+  "FileFormName": "file",
+  "URL": "{json:url}",
 }
 ```
 
