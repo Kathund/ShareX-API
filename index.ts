@@ -1,5 +1,5 @@
 import { errorMessage, otherMessage } from './src/logger';
-import { loadEndpoints } from './src/helper';
+import { loadEndpoints } from './src/functions';
 import fileUpload from 'express-fileupload';
 import { existsSync, mkdirSync } from 'fs';
 import { PORT } from './config.json';
@@ -12,6 +12,9 @@ if (!existsSync('./src/files')) {
 const app = express();
 try {
   (async () => {
+    app.use(express.static('src/public'));
+    app.set('views', './src/views');
+    app.set('view engine', 'ejs');
     app.use(fileUpload());
     const result = await loadEndpoints(app);
     if (result !== undefined) {

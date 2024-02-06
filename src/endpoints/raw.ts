@@ -1,12 +1,11 @@
-import { getDate, getFileSize, getTime } from '../functions';
 import { Application, Request, Response } from 'express';
 import { apiMessage, errorMessage } from '../logger';
 import { existsSync, mkdirSync, statSync } from 'fs';
 import { resolve, dirname } from 'path';
-import { url } from '../../config.json';
+import { getFileSize } from '../functions';
 
 export default (app: Application) => {
-  app.get('/:name', async (req: Request, res: Response) => {
+  app.get('/raw/:name', async (req: Request, res: Response) => {
     try {
       const fileName = req.params.name;
       apiMessage(req.path, `User is trying to get a file - ${fileName}`);
@@ -25,22 +24,10 @@ export default (app: Application) => {
         return res.status(400).json({ success: false, message: `File ${fileName} doesn't exist` });
       }
       apiMessage(req.path, `File ${fileName} found`);
-      const stats = statSync(filePath);
-      return res.render('pages/index', {
-        data: {
-          name: fileName.split('.')[0],
-          timestamp: {
-            raw: stats.birthtimeMs,
-            date: getDate(stats.birthtimeMs),
-            time: getTime(stats.birthtimeMs),
-            utc: getTime(stats.birthtimeMs, 'UTC'),
-          },
-          size: getFileSize(stats.size),
-        },
-        img: `${url}/raw/${fileName}`,
-      });
+      return res.sendFile(filePath);
     } catch (err) {
       errorMessage(err as string);
+      console.log(err);
       return res.status(500).send({ success: false, message: 'Internal server error' });
     }
   });

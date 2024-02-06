@@ -27,3 +27,25 @@ export const generateID = (length: number) => {
   }
   return result;
 };
+
+export const getFileSize = (size: number) => {
+  return {
+    raw: size,
+    dynamic:
+      size < 1024
+        ? size + ' B'
+        : size < 1048576
+          ? (size / 1024).toFixed(2) + ' KB'
+          : (size / 1048576).toFixed(2) + ' MB',
+  };
+};
+
+export const getDate = (timeStamp: number) => {
+  const date = new Date(timeStamp);
+  return date.toDateString();
+};
+
+export const getTime = (timeStamp: number, timeZone?: string) => {
+  const date = new Date(timeStamp);
+  return date.toLocaleTimeString('en-US', { timeZone: timeZone });
+};

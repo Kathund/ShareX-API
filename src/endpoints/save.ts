@@ -1,9 +1,9 @@
 import { Application, Request, Response } from 'express';
-import { apiMessage, errorMessage } from '../logger';
 import { url, key, nameHide } from '../../config.json';
+import { apiMessage, errorMessage } from '../logger';
 import { existsSync, mkdirSync } from 'fs';
 import { resolve, dirname } from 'path';
-import { generateID } from '../helper';
+import { generateID } from '../functions';
 
 export default (app: Application) => {
   app.post('/save/:name', async (req: Request, res: Response) => {

@@ -5,16 +5,18 @@
   "main": "index.ts",
   "scripts": {
     "start": "npm run build && cd dist/ && node index.js",
-    "prettier": "npx prettier --write index.ts src/",
     "prettier:check": "npx prettier --check index.ts src/",
-    "lint": "npx eslint --fix index.ts src/",
+    "prettier": "npx prettier --write index.ts src/",
+    "copy-web-data": "npx ncp src/views/ dist/src/views/ && npx ncp src/public/ dist/src/public/ && npx ncp src/files/ dist/src/files/ ",
     "lint:check": "npx eslint index.ts src/",
-    "build": "npx tsc --build"
+    "lint": "npx eslint --fix index.ts src/",
+    "build": "npx tsc --build && npm run copy-web-data"
   },
   "keywords": [],
   "author": "",
   "license": "MIT",
   "dependencies": {
+    "ejs": "^3.1.9",
     "express": "^4.18.2",
     "express-fileupload": "^1.4.3",
     "winston": "^3.11.0"
@@ -25,6 +27,7 @@
     "@typescript-eslint/eslint-plugin": "^6.20.0",
     "eslint": "^8.56.0",
     "eslint-plugin-import": "^2.29.1",
+    "ncp": "^2.0.0",
     "prettier": "^3.2.5",
     "typescript": "^5.3.3"
   }

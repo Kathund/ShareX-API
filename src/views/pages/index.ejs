@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Image - <%= data.name %>
+  </title>
+  <link rel="stylesheet" href="css/index.css">
+</head>
+
+<body>
+  <main>
+    <% if (img.endsWith('.mp4')) { %>
+      <video controls>
+        <source src="<%= img %>" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+      <% } else { %>
+        <img src="<%= img %>" alt="Image">
+        <% } %>
+          <div class="text">
+            <h1>Name - <%= data.name %>
+            </h1>
+            <div class="tooltip">
+              <h1>Time - <%= data.timestamp.time %>
+              </h1>
+              <span class="tooltiptext">UTC - <%= data.timestamp.utc %></span>
+            </div>
+            <h1>Date - <%= data.timestamp.date %>
+            </h1>
+            <h1>Size - <%= data.size.dynamic %>
+            </h1>
+          </div>
+  </main>
+</body>
+
+</html>
