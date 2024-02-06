@@ -1,8 +1,7 @@
 import { Application, Request, Response } from 'express';
 import { apiMessage, errorMessage } from '../logger';
-import { existsSync, mkdirSync, statSync } from 'fs';
+import { existsSync, mkdirSync } from 'fs';
 import { resolve, dirname } from 'path';
-import { getFileSize } from '../functions';
 
 export default (app: Application) => {
   app.get('/raw/:name', async (req: Request, res: Response) => {
@@ -27,7 +26,6 @@ export default (app: Application) => {
       return res.sendFile(filePath);
     } catch (err) {
       errorMessage(err as string);
-      console.log(err);
       return res.status(500).send({ success: false, message: 'Internal server error' });
     }
   });

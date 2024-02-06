@@ -10,7 +10,7 @@
 
 body {
   font-family: 'Inter', sans-serif;
-  background-color: #DCDCDC;
+  background-color: #dcdcdc;
   color: #343434;
   font-size: 24;
   height: 100vh;
@@ -31,14 +31,13 @@ img {
   text-align: center;
   margin: 0 auto;
   padding: 20px;
-  background-color: #BFB9B9;
+  background-color: #bfb9b9;
 }
-
 
 @media (prefers-color-scheme: dark) {
   body {
     background-color: #464646;
-    color: #DCDCDC;
+    color: #dcdcdc;
   }
 
   .text {
