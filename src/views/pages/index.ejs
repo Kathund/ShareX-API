@@ -4,9 +4,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Image - <%= data.name %>
-  </title>
+  <title>Image - <%= data.name %></title>
   <link rel="stylesheet" href="css/index.css">
+  <meta name="robots" content="noindex">
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta property="og:image" content="<%= img %>" />
+  <meta name="theme-color" content="#000000" />
+  <meta property="og:description" content="" />
+  <meta property="og:site_name" content="">
 </head>
 
 <body>
@@ -20,17 +25,13 @@
         <img src="<%= img %>" alt="Image">
         <% } %>
           <div class="text">
-            <h1>Name - <%= data.name %>
-            </h1>
+            <h1>Name - <%= data.name %></h1>
             <div class="tooltip">
-              <h1>Time - <%= data.timestamp.time %>
-              </h1>
+              <h1>Time - <%= data.timestamp.time %></h1>
               <span class="tooltiptext">UTC - <%= data.timestamp.utc %></span>
             </div>
-            <h1>Date - <%= data.timestamp.date %>
-            </h1>
-            <h1>Size - <%= data.size.dynamic %>
-            </h1>
+            <h1>Date - <%= data.timestamp.date %></h1>
+            <h1>Size - <%= data.size.dynamic %></h1>
           </div>
   </main>
 </body>
