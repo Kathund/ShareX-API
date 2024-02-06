@@ -20,7 +20,9 @@ body {
   align-items: center;
 }
 
-img {
+img,
+video {
+  border-radius: 16px 16px 0 0;
   max-width: 75vw;
   height: auto;
   justify-self: center;
@@ -32,6 +34,7 @@ img {
   margin: 0 auto;
   padding: 20px;
   background-color: #bfb9b9;
+  border-radius: 0 0 16px 16px;
 }
 
 @media (prefers-color-scheme: dark) {

@@ -4,7 +4,7 @@
   "version": "1.0.0",
   "main": "index.ts",
   "scripts": {
-    "start": "npm run build && cd dist/ && node index.js",
+    "start": "npx tsx index.ts",
     "prettier:check": "npx prettier --check index.ts src/",
     "prettier": "npx prettier --write index.ts src/",
     "copy-web-data": "npx ncp src/views/ dist/src/views/ && npx ncp src/public/ dist/src/public/",
@@ -29,6 +29,7 @@
     "eslint-plugin-import": "^2.29.1",
     "ncp": "^2.0.0",
     "prettier": "^3.2.5",
+    "tsx": "^4.7.0",
     "typescript": "^5.3.3"
   }
 }
