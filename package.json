@@ -7,7 +7,7 @@
     "start": "npm run build && cd dist/ && node index.js",
     "prettier:check": "npx prettier --check index.ts src/",
     "prettier": "npx prettier --write index.ts src/",
-    "copy-web-data": "npx ncp src/views/ dist/src/views/ && npx ncp src/public/ dist/src/public/ && npx ncp src/files/ dist/src/files/ ",
+    "copy-web-data": "npx ncp src/views/ dist/src/views/ && npx ncp src/public/ dist/src/public/",
     "lint:check": "npx eslint index.ts src/",
     "lint": "npx eslint --fix index.ts src/",
     "build": "npx tsc --build && npm run copy-web-data"
