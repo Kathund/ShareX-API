@@ -70,7 +70,7 @@ To setup your new ShareX API and make it work with ShareX you will need to do th
 
 3. Go back to ShareX and click `Import` then select `From clipboard` and then click `OK`.
    ![Importing Default Config](.github/readme/assets/ShareX_Setup_Importing_Config.png)
-4. Change the `Request URL`, `URL` and the `API-KEY` to the correct values that are set in your `config.json` file.
+4. Change the `Request URL` and the `API-KEY` to the correct values that are set in your `config.json` file.
    ![Changing Default Config](.github/readme/assets/ShareX_Setup_Changing_Config.png)
 5. Under `Image Uploader` in the bottom right make sure its set to `ShareX-Uploader` and then click `Test` to make sure it works.
    ![Testing Image Uploading](.github/readme/assets/ShareX_Setup_Testing.png)
