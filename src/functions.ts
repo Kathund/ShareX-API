@@ -40,9 +40,9 @@ export const getFileSize = (size: number) => {
   };
 };
 
-export const getDate = (timeStamp: number) => {
+export const getDate = (timeStamp: number, timeZone?: string) => {
   const date = new Date(timeStamp);
-  return date.toDateString();
+  return date.toLocaleDateString('en-US', { timeZone: timeZone });
 };
 
 export const getTime = (timeStamp: number, timeZone?: string) => {

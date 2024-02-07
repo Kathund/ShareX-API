@@ -4,7 +4,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Image - <%= data.name %></title>
+  <title>File - <%= data.name %></title>
+  <link rel="icon" type="image/x-icon" href="files/favicon.ico">
   <link rel="stylesheet" href="css/index.css">
   <meta name="robots" content="noindex">
   <meta name="twitter:card" content="summary_large_image" />
@@ -27,10 +28,10 @@
           <div class="text">
             <h1>Name - <%= data.name %></h1>
             <div class="tooltip">
-              <h1>Time - <%= data.timestamp.time %></h1>
+              <h1>Time - <%= getTime(data.timestamp.unix, Intl.DateTimeFormat().resolvedOptions().timeZone) %></h1>
               <span class="tooltiptext">UTC - <%= data.timestamp.utc %></span>
             </div>
-            <h1>Date - <%= data.timestamp.date %></h1>
+            <h1>Date - <%= getDate(data.timestamp.unix, Intl.DateTimeFormat().resolvedOptions().timeZone) %></h1>
             <h1>Size - <%= data.size.dynamic %></h1>
           </div>
   </main>

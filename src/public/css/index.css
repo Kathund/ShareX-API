@@ -1,4 +1,11 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('fonts/Inter.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
 
 *,
 *::before,
@@ -11,30 +18,29 @@
 body {
   font-family: 'Inter', sans-serif;
   background-color: #dcdcdc;
-  color: #343434;
-  font-size: 24;
-  height: 100vh;
-  width: 100vw;
-  display: flex;
   justify-content: center;
   align-items: center;
+  color: #343434;
+  height: 100vh;
+  display: flex;
+  width: 100vw;
 }
 
 img,
 video {
+  filter: drop-shadow(#00000080 16px 16px 18px);
   border-radius: 16px 16px 0 0;
   max-width: 75vw;
   height: auto;
-  justify-self: center;
-  align-self: center;
+
 }
 
 .text {
-  text-align: center;
-  margin: 0 auto;
-  padding: 20px;
-  background-color: #bfb9b9;
+  filter: drop-shadow(#00000080 16px 16px 18px);
   border-radius: 0 0 16px 16px;
+  background-color: #bfb9b9;
+  text-align: center;
+  padding: 20px;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -49,25 +55,23 @@ video {
 }
 
 .tooltip {
-  position: relative;
   display: inline-block;
+  position: relative;
 }
 
-/* Tooltip text */
 .tooltip .tooltiptext {
-  visibility: hidden;
   background-color: black;
-  color: #fff;
+  visibility: hidden;
   text-align: center;
-  padding: 5px 0;
-  border-radius: 6px;
-
-  width: 160px;
-  bottom: 100%;
-  left: 50%;
   margin-left: -60px;
+  border-radius: 6px;
   position: absolute;
+  padding: 5px 0;
+  color: #fff;
+  bottom: 100%;
+  width: 160px;
   z-index: 1;
+  left: 50%;
 }
 
 .tooltip:hover .tooltiptext {
