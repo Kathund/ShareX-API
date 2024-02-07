@@ -46,31 +46,8 @@ npm start
 
 To setup your new ShareX API and make it work with ShareX you will need to do the following:
 
-1. Open [ShareX](https://getsharex.com) and then on the right go to `Destinations` and then click on `Custom uploader settings`.
-   ![Going to the custom uploader settings](.github/readme/assets/ShareX_Setup_CustomUploader_Settings.png)
-2. Copy the default config from the code block below
-
-```json
-{
-  "Version": "15.0.0",
-  "Name": "ShareX-Uploader",
-  "DestinationType": "ImageUploader",
-  "RequestMethod": "POST",
-  "RequestURL": "URL_OF_THE_CDN/save/{filename}",
-  "Headers": {
-    "api-key": "API_KEY"
-  },
-  "Body": "MultipartFormData",
-  "FileFormName": "file",
-  "URL": "{json:url}",
-  "DeletionURL": "{json:delete}",
-  "ErrorMessage": "{json:message}"
-}
-```
-
-3. Go back to ShareX and click `Import` then select `From clipboard` and then click `OK`.
-   ![Importing Default Config](.github/readme/assets/ShareX_Setup_Importing_Config.png)
-4. Change the `Request URL` and the `API-KEY` to the correct values that are set in your `config.json` file.
-   ![Changing Default Config](.github/readme/assets/ShareX_Setup_Changing_Config.png)
-5. Under `Image Uploader` in the bottom right make sure its set to `ShareX-Uploader` and then click `Test` to make sure it works.
-   ![Testing Image Uploading](.github/readme/assets/ShareX_Setup_Testing.png)
+1. Have the api running
+2. In your console you will see `Config is available to be generated @ <URL>`, After going to that url you will be promoted to save a file called `ShareX-API-Config.sxcu` This file is a ShareX Custom Uploader Configuration file.
+3. From there navigate to folder where you have downloaded the config file and open it with ShareX.
+4. Your will be promoted if you want ot make `ShareX-Uploader` your default uploader, click yes.
+5. You are now ready to use the API with ShareX.

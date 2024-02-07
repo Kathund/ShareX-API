@@ -42,8 +42,8 @@ export default (app: Application) => {
       apiMessage(req.path, `File ${fileName} has been saved`);
       return res.status(200).json({
         success: true,
-        message: `File has been saved at ${url}/${fileName}`,
-        url: `${url}/${fileName}`,
+        message: `File has been saved at ${url}/view/${fileName}`,
+        url: `${url}/view/${fileName}`,
         delete: `${url}/delete/${fileName}`,
       });
     } catch (err) {

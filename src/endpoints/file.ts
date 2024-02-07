@@ -6,7 +6,7 @@ import { resolve, dirname } from 'path';
 import { url } from '../../config.json';
 
 export default (app: Application) => {
-  app.get('/:name', async (req: Request, res: Response) => {
+  app.get('/view/:name', async (req: Request, res: Response) => {
     try {
       const fileName = req.params.name;
       if (fileName === 'favicon.ico') return;
