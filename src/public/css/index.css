@@ -21,6 +21,7 @@ body {
   background-color: #dcdcdc;
   justify-content: center;
   align-items: center;
+  font-size: 1.5rem;
   color: #343434;
   height: 100vh;
   display: flex;
@@ -29,18 +30,27 @@ body {
 
 img,
 video {
-  filter: drop-shadow(#00000080 16px 16px 18px);
   border-radius: 16px 16px 0 0;
+  max-height: 75vh;
   max-width: 75vw;
   height: auto;
+  width: auto;
+}
+
+.container {
+  filter: drop-shadow(#000000bf 20px 20px 30px);
+  background-color: #bfb9b9;
+  border-radius: 16px;
 }
 
 .text {
-  filter: drop-shadow(#00000080 16px 16px 18px);
-  border-radius: 0 0 16px 16px;
-  background-color: #bfb9b9;
   text-align: center;
+  max-height: 75vh;
+  max-width: 75vw;
   padding: 20px;
+  height: auto;
+  width: auto;
+  z-index: 2;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -49,7 +59,8 @@ video {
     color: #dcdcdc;
   }
 
-  .text {
+  .container {
+    filter: drop-shadow(#ffffff1a 20px 20px 30px);
     background-color: #363636;
   }
 }
@@ -66,8 +77,9 @@ video {
   margin-left: -60px;
   border-radius: 6px;
   position: absolute;
-  padding: 5px 0;
-  color: #fff;
+  color: #dcdcdc;
+  padding: 0.25rem;
+  font-size: 1rem;
   bottom: 100%;
   width: 160px;
   z-index: 1;

@@ -17,23 +17,24 @@
 
 <body>
   <main>
-    <% if (img.endsWith('.mp4')) { %>
-      <video controls>
-        <source src="<%= img %>" type="video/mp4">
-        Your browser does not support the video tag.
-      </video>
+    <div class="container">
+      <% if (img.endsWith('.mp4')) { %>
+        <video controls>
+          <source src="<%= img %>" type="video/mp4"> Your browser does not support the video tag.
+        </video>
       <% } else { %>
         <img src="<%= img %>" alt="Image">
-        <% } %>
-          <div class="text">
-            <h1>Name - <%= data.name %></h1>
-            <div class="tooltip">
-              <h1>Time - <%= getTime(data.timestamp.unix, Intl.DateTimeFormat().resolvedOptions().timeZone) %></h1>
-              <span class="tooltiptext">UTC - <%= data.timestamp.utc %></span>
-            </div>
-            <h1>Date - <%= getDate(data.timestamp.unix, Intl.DateTimeFormat().resolvedOptions().timeZone) %></h1>
-            <h1>Size - <%= data.size.dynamic %></h1>
-          </div>
+      <% } %>
+      <div class="text">
+        <p>Name - <%= data.name %></p>
+        <div class="tooltip">
+          <p>Time - <%= getTime(data.timestamp.unix, Intl.DateTimeFormat().resolvedOptions().timeZone) %></p>
+          <span class="tooltiptext">UTC - <%= data.timestamp.utc %></span>
+        </div>
+        <p>Date - <%= getDate(data.timestamp.unix, Intl.DateTimeFormat().resolvedOptions().timeZone) %></p>
+        <p>Size - <%= data.size.dynamic %></p>
+      </div>
+    </div>
   </main>
 </body>
 

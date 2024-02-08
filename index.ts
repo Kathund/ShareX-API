@@ -1,8 +1,8 @@
-import { errorMessage, otherMessage } from './src/logger';
+import { errorMessage, otherMessage, warnMessage } from './src/logger';
 import { loadEndpoints } from './src/functions';
-import fileUpload from 'express-fileupload';
+import { PORT, url, key } from './config.json';
 import { existsSync, mkdirSync } from 'fs';
-import { PORT, url } from './config.json';
+import fileUpload from 'express-fileupload';
 import express from 'express';
 
 if (!existsSync('./src/files')) {
@@ -25,6 +25,9 @@ try {
     }
     app.listen(PORT, () => {
       otherMessage(`Server started on port ${PORT} @ http://localhost:${PORT}`);
+      if (key === 'API_KEY') {
+        warnMessage('The API Key is still the default key! It is recommended to change this in the config.json file.');
+      }
       otherMessage(`Config is available to be generated @ ${url}/config/generate?key=${global.generateKey}`);
       setTimeout(() => {
         if (global.generateKey === null) return;

@@ -1,9 +1,9 @@
+import { url, key, nameHide, maxFileSize } from '../../config.json';
 import { Application, Request, Response } from 'express';
-import { url, key, nameHide } from '../../config.json';
 import { apiMessage, errorMessage } from '../logger';
 import { existsSync, mkdirSync } from 'fs';
-import { resolve, dirname } from 'path';
 import { generateID } from '../functions';
+import { resolve, dirname } from 'path';
 
 export default (app: Application) => {
   app.post('/save/:name', async (req: Request, res: Response) => {
@@ -23,6 +23,10 @@ export default (app: Application) => {
       const fileNamePattern = /^[a-zA-Z0-9_-]+\.[a-zA-Z0-9]+$/;
       if (!fileNamePattern.test(fileName)) {
         return res.status(400).json({ error: 'Invalid file name' });
+      }
+      if (file.size > maxFileSize) {
+        errorMessage('File is too big');
+        return res.status(400).json({ success: false, message: 'File is too big' });
       }
       const dir = resolve(dirname(''), 'src/files');
       if (!existsSync(dir)) {
