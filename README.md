@@ -47,7 +47,7 @@ npm start
 To setup your new ShareX API and make it work with ShareX you will need to do the following:
 
 1. Have the api running
-2. In your console you will see `Config is available to be generated @ <URL>`, After going to that url you will be promoted to save a file called `ShareX-API-Config.sxcu` This file is a ShareX Custom Uploader Configuration file.
+2. In your console you will see `Config is available to be generated @ <URL>/generate?key=<Generated Key>`, After going to that url you will be promoted to save a file called `ShareX-API-Config.sxcu` This file is a ShareX Custom Uploader Configuration file.
 3. From there navigate to folder where you have downloaded the config file and open it with ShareX.
 4. Your will be promoted if you want ot make `ShareX-Uploader` your default uploader, click yes.
 5. You are now ready to use the API with ShareX.
@@ -73,3 +73,7 @@ The `key` option is the key that is used to authenticate the user when uploading
 ### Max File Size
 
 The `maxFileSize` option is the maximum file size that the API will accept. This is useful for stopping people from uploading large files to your API and using up all of your server space. This is set in bytes and the default is `104857600 Bytes` (100mb) due to Cloudflare tunnel's max `free` plan only supports 100mb file size.
+
+### Allow Config Gen
+
+The `allowConfigGen` option that lets the user generate a ShareX config file. Once the user has generated the config it is **highly** recommended to set this to `false` to stop people from generating a config file and using your API without your permission.

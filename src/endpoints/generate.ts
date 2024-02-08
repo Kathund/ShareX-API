@@ -1,12 +1,13 @@
 import { Application, Request, Response } from 'express';
 import { apiMessage, errorMessage } from '../logger';
-import { url, key } from '../../config.json';
+import { url, key, allowConfigGen } from '../../config.json';
 
 export default (app: Application) => {
-  app.get('/config/generate', async (req: Request, res: Response) => {
+  app.get('/generate', async (req: Request, res: Response) => {
     try {
+      if (!allowConfigGen) return res.status(400).send({ success: false, message: 'Config generation is disabled' });
       if (global.generateKey === null) {
-        return res.status(500).send({ success: false, message: 'You have already generated a config' });
+        return res.status(400).send({ success: false, message: 'You have already generated a config' });
       }
       const genKey = req.query.key;
       if (genKey !== global.generateKey) {
@@ -22,7 +23,7 @@ export default (app: Application) => {
         .send({
           Version: '15.0.0',
           Name: 'ShareX-Uploader',
-          DestinationType: 'ImageUploader',
+          DestinationType: 'ImageUploader, FileUploader',
           RequestMethod: 'POST',
           RequestURL: `${url}/save/{filename}`,
           Headers: {

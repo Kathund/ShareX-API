@@ -3,5 +3,6 @@
   "url": "URL_OF_THE_CDN",
   "nameHide": true,
   "key": "API_KEY",
-  "maxFileSize": 104857600
+  "maxFileSize": 104857600,
+  "allowConfigGen": true
 }

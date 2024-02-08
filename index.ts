@@ -1,6 +1,6 @@
 import { errorMessage, otherMessage, warnMessage } from './src/logger';
+import { PORT, url, key, allowConfigGen } from './config.json';
 import { loadEndpoints } from './src/functions';
-import { PORT, url, key } from './config.json';
 import { existsSync, mkdirSync } from 'fs';
 import fileUpload from 'express-fileupload';
 import express from 'express';
@@ -16,7 +16,7 @@ try {
     app.set('views', './src/views');
     app.set('view engine', 'ejs');
     app.use(fileUpload());
-    global.generateKey = crypto.randomUUID();
+    global.generateKey = allowConfigGen ? crypto.randomUUID() : null;
     const result = await loadEndpoints(app);
     if (result !== undefined) {
       otherMessage(`Loaded ${result} endpoints`);
@@ -28,7 +28,8 @@ try {
       if (key === 'API_KEY') {
         warnMessage('The API Key is still the default key! It is recommended to change this in the config.json file.');
       }
-      otherMessage(`Config is available to be generated @ ${url}/config/generate?key=${global.generateKey}`);
+      if (global.generateKey === null) return;
+      otherMessage(`Config is available to be generated @ ${url}/generate?key=${global.generateKey}`);
       setTimeout(() => {
         if (global.generateKey === null) return;
         global.generateKey = null;
