@@ -20,9 +20,14 @@ export default (app: Application) => {
         return res.status(400).send({ success: false, message: 'No file provided' });
       }
       const fileName = nameHide ? `${generateID(10)}.${req.params.name.split('.')[1]}` : req.params.name;
-      const fileNamePattern = /^[a-zA-Z0-9_-]+\.[a-zA-Z0-9]+$/;
+      const fileNamePattern = /^[a-zA-Z0-9]+\.(jpg|jpeg|png|mp4)$/;
       if (!fileNamePattern.test(fileName)) {
-        return res.status(400).json({ error: 'Invalid file name' });
+        return res
+          .status(400)
+          .json({
+            error:
+              'Invalid file name. Please only use English Alphabet characters, 0-9. .jpg .jpeg .png .mp4 are the only supported file types',
+          });
       }
       if (file.size > maxFileSize) {
         errorMessage('File is too big');

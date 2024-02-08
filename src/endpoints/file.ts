@@ -11,9 +11,9 @@ export default (app: Application) => {
       const fileName = req.params.name;
       if (fileName === 'favicon.ico') return;
       apiMessage(req.path, `User is trying to get a file - ${fileName}`);
-      const fileNamePattern = /^[a-zA-Z0-9_-]+\.[a-zA-Z0-9]+$/;
+      const fileNamePattern = /^[a-zA-Z0-9]+\.(jpg|jpeg|png|mp4)$/;
       if (!fileNamePattern.test(fileName)) {
-        return res.status(400).json({ error: 'Invalid file name' });
+        return res.status(400).render('pages/badName');
       }
       const dir = resolve(dirname(''), 'src/files');
       if (!existsSync(dir)) {
@@ -22,7 +22,7 @@ export default (app: Application) => {
       const filePath = resolve(dir, fileName);
       if (!existsSync(filePath)) {
         errorMessage(`File ${fileName} doesn't exists`);
-        return res.status(400).json({ success: false, message: `File ${fileName} doesn't exist` });
+        return res.status(400).render('pages/missingFile');
       }
       apiMessage(req.path, `File ${fileName} found`);
       const stats = statSync(filePath);
