@@ -16,12 +16,10 @@ export default (app: Application) => {
       const fileName = req.params.name;
       const fileNamePattern = /^[a-zA-Z0-9]+\.(jpg|jpeg|png|mp4)$/;
       if (!fileNamePattern.test(fileName)) {
-        return res
-          .status(400)
-          .json({
-            error:
-              'Invalid file name. Please only use English Alphabet characters, 0-9. .jpg .jpeg .png .mp4 are the only supported file types',
-          });
+        return res.status(400).json({
+          error:
+            'Invalid file name. Please only use English Alphabet characters, 0-9. .jpg .jpeg .png .mp4 are the only supported file types',
+        });
       }
       const dir = resolve(dirname(''), 'src/files');
       if (!existsSync(dir)) {
