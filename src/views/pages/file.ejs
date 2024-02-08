@@ -3,7 +3,8 @@
 
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ShareX-API | <%= data.name %>.<%= data.fileExtension %></title>
+  <title>ShareX-API | <%= data.name %>.<%= data.fileExtension %>
+  </title>
   <link rel="icon" type="image/x-icon" href="../files/favicon.ico">
   <meta name="twitter:card" content="summary_large_image" />
   <meta property="og:image" content="<%= img %>" />
@@ -15,9 +16,9 @@
   <meta charset="UTF-8">
 
   <% if (img.endsWith('.mp4')) { %>
-    <meta name="twitter:player" content="video url">
+  <meta name="twitter:player" content="video url">
   <% } else { %>
-    <meta property="og:image" content="<%= img %>" />
+  <meta property="og:image" content="<%= img %>" />
   <% } %>
 </head>
 
@@ -25,20 +26,24 @@
   <main>
     <div class="container">
       <% if (img.endsWith('.mp4')) { %>
-        <video controls>
-          <source src="<%= img %>" type="video/mp4"> Your browser does not support the video tag.
-        </video>
+      <video controls>
+        <source src="<%= img %>" type="video/mp4"> Your browser does not support the video tag.
+      </video>
       <% } else { %>
-        <img src="<%= img %>" alt="Image">
+      <img src="<%= img %>" alt="Image">
       <% } %>
       <div class="text">
-        <p>Name - <%= data.name %></p>
+        <p>Name - <%= data.name %>
+        </p>
         <div class="tooltip">
-          <p>Time - <%= getTime(data.timestamp.unix, Intl.DateTimeFormat().resolvedOptions().timeZone) %></p>
+          <p>Time - <%= getTime(data.timestamp.unix, Intl.DateTimeFormat().resolvedOptions().timeZone) %>
+          </p>
           <span class="tooltiptext">UTC - <%= data.timestamp.utc %></span>
         </div>
-        <p>Date - <%= getDate(data.timestamp.unix, Intl.DateTimeFormat().resolvedOptions().timeZone) %></p>
-        <p>Size - <%= data.size.dynamic %></p>
+        <p>Date - <%= getDate(data.timestamp.unix, Intl.DateTimeFormat().resolvedOptions().timeZone) %>
+        </p>
+        <p>Size - <%= data.size.dynamic %>
+        </p>
       </div>
     </div>
   </main>
