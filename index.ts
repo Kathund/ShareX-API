@@ -3,7 +3,7 @@ import { PORT, url, key, allowConfigGen } from './config.json';
 import { loadEndpoints } from './src/functions';
 import { existsSync, mkdirSync } from 'fs';
 import fileUpload from 'express-fileupload';
-import express from 'express';
+import express, { Request, Response } from 'express';
 
 if (!existsSync('./src/files')) {
   mkdirSync('./src/files');
@@ -23,6 +23,16 @@ try {
     } else {
       otherMessage('No endpoints found');
     }
+
+    app.get('/', async (req: Request, res: Response) => {
+      try {
+        return res.status(200).render('pages/index');
+      } catch (err) {
+        errorMessage(err as string);
+        return res.status(500).send({ success: false, message: 'Internal server error' });
+      }
+    });
+
     app.listen(PORT, () => {
       otherMessage(`Server started on port ${PORT} @ http://localhost:${PORT}`);
       if (key === 'API_KEY') {

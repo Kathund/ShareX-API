@@ -53,9 +53,23 @@ video {
   z-index: 2;
 }
 
+a {
+  text-decoration: none;
+  color: #343434;
+}
+
+.homePageText {
+  font-size: 2rem;
+  font-weight: 600;
+}
+
 @media (prefers-color-scheme: dark) {
   body {
     background-color: #464646;
+    color: #dcdcdc;
+  }
+
+  a {
     color: #dcdcdc;
   }
 

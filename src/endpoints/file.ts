@@ -26,9 +26,10 @@ export default (app: Application) => {
       }
       apiMessage(req.path, `File ${fileName} found`);
       const stats = statSync(filePath);
-      return res.render('pages/index', {
+      return res.render('pages/file', {
         data: {
           name: fileName.split('.')[0],
+          fileExtension: fileName.split('.')[1],
           timestamp: {
             raw: stats.birthtimeMs,
             unix: stats.birthtimeMs,
