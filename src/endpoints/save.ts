@@ -50,7 +50,7 @@ export default (app: Application) => {
       return res.status(200).json({
         success: true,
         message: `File has been saved at ${url}/view/${fileName}`,
-        url: `${url}/view/${fileName}`,
+        url: `${url}/${fileName.split('.')[1] === 'mp4' ? 'raw' : 'view'}/${fileName}`,
         delete: `${url}/delete/${fileName}`,
       });
     } catch (err) {

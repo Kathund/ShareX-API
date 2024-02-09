@@ -6,7 +6,6 @@
   <title>ShareX-API | <%= data.name %>.<%= data.fileExtension %></title>
   <link rel="icon" type="image/x-icon" href="../files/favicon.ico">
   <meta name="twitter:card" content="summary_large_image" />
-  <meta property="og:image" content="<%= img %>" />
   <link rel="stylesheet" href="../css/index.css">
   <meta name="theme-color" content="#000000" />
   <meta property="og:description" content="" />
@@ -14,9 +13,12 @@
   <meta name="robots" content="noindex">
   <meta charset="UTF-8">
   <% if (img.endsWith('.mp4')) { %>
-  <meta name="twitter:player" content="<%= img %>"><%
-  } else { %>
-  <meta property="og:image" content="<%= img %>" /><% } %>
+  <meta name="og:video:secure_url" content="<%= img %>">
+  <meta property="og:video:type" content="video/mp4">
+  <meta name="og:video" content="<%= img %>">
+  <% } else { %>
+  <meta property="og:image" content="<%= img %>" />
+  <% } %>
 </head>
 
 <body>
@@ -40,5 +42,3 @@
     </div>
   </main>
 </body>
-
-<>
