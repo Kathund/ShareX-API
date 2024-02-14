@@ -1,9 +1,9 @@
 import { errorMessage, otherMessage, warnMessage } from './src/logger';
 import { PORT, url, key, allowConfigGen } from './config.json';
+import express, { Request, Response } from 'express';
 import { loadEndpoints } from './src/functions';
 import { existsSync, mkdirSync } from 'fs';
 import fileUpload from 'express-fileupload';
-import express, { Request, Response } from 'express';
 
 if (!existsSync('./src/files')) {
   mkdirSync('./src/files');
