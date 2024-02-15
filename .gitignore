@@ -4,3 +4,5 @@ dist
 config.json
 src/files/
 package-lock.json
+*.css
+*.css.map

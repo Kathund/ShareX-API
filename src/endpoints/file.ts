@@ -13,7 +13,12 @@ export default (app: Application) => {
       apiMessage(req.path, `User is trying to get a file - ${fileName}`);
       const fileNamePattern = /^[a-zA-Z0-9]+\.(jpg|jpeg|png|mp4)$/;
       if (!fileNamePattern.test(fileName)) {
-        return res.status(400).render('pages/badName');
+        return res.status(400).render('pages/error', {
+          type: 'Invalid file name',
+          message: `${fileName} is an invalid file name`,
+          message2: 'Please only use English Alphabet characters, 0-9',
+          message3: '.jpg .jpeg .png .mp4 are the only supported file types',
+        });
       }
       const dir = resolve(dirname(''), 'src/files');
       if (!existsSync(dir)) {
@@ -22,7 +27,10 @@ export default (app: Application) => {
       const filePath = resolve(dir, fileName);
       if (!existsSync(filePath)) {
         errorMessage(`File ${fileName} doesn't exists`);
-        return res.status(400).render('pages/missingFile');
+        return res.status(400).render('pages/error', {
+          type: 'File not found',
+          message: `File ${fileName} doesn't exist`,
+        });
       }
       apiMessage(req.path, `File ${fileName} found`);
       const stats = statSync(filePath);

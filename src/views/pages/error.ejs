@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/x-icon" href="../files/favicon.ico">
+  <link rel="stylesheet" href="../css/error.css">
+  <meta name="robots" content="noindex,nofollow">
+  <title>ShareX-API | <%= type %></title>
+  <meta charset="UTF-8">
+</head>
+
+<body>
+  <main>
+    <img src="https://images.unsplash.com/photo-1582845512747-e42001c95638" alt="Image of a rubber duck">
+    <div class="text">
+      <p class="warningMsg"><%= message %></p>
+      <% if (type === 'Invalid file name') { %>
+      <p class="warningMsg"><%= message2 %></p>
+      <p class="warningMsg"><%= message3 %></p>
+      <% } %>
+      <p>Heres a duck instead</p>
+    </div>
+  </main>
+</body>
+
+</html>

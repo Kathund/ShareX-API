@@ -6,7 +6,7 @@
   <title>ShareX-API | <%= data.name %>.<%= data.fileExtension %></title>
   <link rel="icon" type="image/x-icon" href="../files/favicon.ico">
   <meta name="twitter:card" content="summary_large_image" />
-  <link rel="stylesheet" href="../css/index.css">
+  <link rel="stylesheet" href="../css/file.css">
   <meta name="theme-color" content="#000000" />
   <meta property="og:description" content="" />
   <meta property="og:site_name" content="">
@@ -23,22 +23,21 @@
 
 <body>
   <main>
-    <div class="container">
-      <% if (img.endsWith(".mp4")) { %>
-      <video controls>
-        <source src="<%= img %>" type="video/mp4"> Your browser does not support the video tag.
-      </video>
-      <% } else { %>
-      <img src="<%= img %>" alt="Image">
-      <% } %>
-      <div class="text">
-        <p>Name - <%= data.name %></p>
-        <div class="tooltip">
-          <p>Time - <%= getTime(data.timestamp.unix, Intl.DateTimeFormat().resolvedOptions().timeZone) %></p><span class="tooltiptext">UTC - <%= data.timestamp.utc %></span>
-        </div>
-        <p>Date - <%= getDate(data.timestamp.unix, Intl.DateTimeFormat().resolvedOptions().timeZone) %></p>
-        <p>Size - <%= data.size.dynamic %></p>
+    <% if (img.endsWith(".mp4")) { %>
+    <video controls>
+      <source src="<%= img %>" type="video/mp4"> Your browser does not support the video tag.
+    </video>
+    <% } else { %>
+    <img src="<%= img %>" alt="Image">
+    <% } %>
+    <div class="text">
+      <p>Name - <%= data.name %></p>
+      <div class="tooltip">
+        <p>Time - <%= getTime(data.timestamp.unix, Intl.DateTimeFormat().resolvedOptions().timeZone) %></p>
+        <span class="tooltiptext">UTC - <%= data.timestamp.utc %></span>
       </div>
+      <p>Date - <%= getDate(data.timestamp.unix, Intl.DateTimeFormat().resolvedOptions().timeZone) %></p>
+      <p>Size - <%= data.size.dynamic %></p>
     </div>
   </main>
 </body>
