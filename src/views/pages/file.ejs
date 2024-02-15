@@ -12,7 +12,7 @@
   <meta property="og:site_name" content="">
   <meta name="robots" content="noindex,nofollow">
   <meta charset="UTF-8">
-  <% if (img.endsWith('.mp4')) { %>
+  <% if (img.endsWith(".mp4")) { %>
   <meta name="og:video:secure_url" content="<%= img %>">
   <meta property="og:video:type" content="video/mp4">
   <meta name="og:video" content="<%= img %>">
@@ -24,7 +24,7 @@
 <body>
   <main>
     <div class="container">
-      <% if (img.endsWith('.mp4')) { %>
+      <% if (img.endsWith(".mp4")) { %>
       <video controls>
         <source src="<%= img %>" type="video/mp4"> Your browser does not support the video tag.
       </video>

@@ -1,6 +1,6 @@
+import { PORT, url, key, allowConfigGen, discordEmbed } from './config.json';
 import { errorMessage, otherMessage, warnMessage } from './src/logger';
-import { PORT, url, key, allowConfigGen } from './config.json';
-import express, { Request, Response } from 'express';
+import express, { json, Request, Response } from 'express';
 import { loadEndpoints } from './src/functions';
 import { existsSync, mkdirSync } from 'fs';
 import fileUpload from 'express-fileupload';
@@ -16,7 +16,9 @@ try {
     app.set('views', './src/views');
     app.set('view engine', 'ejs');
     app.use(fileUpload());
+    app.use(json());
     global.generateKey = allowConfigGen ? crypto.randomUUID() : null;
+    global.discordEmbedKey = discordEmbed ? crypto.randomUUID() : null;
     const result = await loadEndpoints(app);
     if (result !== undefined) {
       otherMessage(`Loaded ${result} endpoints`);
@@ -38,13 +40,18 @@ try {
       if (key === 'API_KEY') {
         warnMessage('The API Key is still the default key! It is recommended to change this in the config.json file.');
       }
-      if (global.generateKey === null) return;
-      otherMessage(`Config is available to be generated @ ${url}/generate?key=${global.generateKey}`);
-      setTimeout(() => {
-        if (global.generateKey === null) return;
-        global.generateKey = null;
-        otherMessage(`Config is no longer available to be generated. Please restart to generate a new key.`);
-      }, 300000);
+      if (global.discordEmbedKey !== null) {
+        otherMessage(`Discord Embed is available to be customized @ ${url}/discord?key=${global.discordEmbedKey}`);
+      }
+
+      if (global.generateKey !== null) {
+        otherMessage(`Config is available to be generated @ ${url}/generate?key=${global.generateKey}`);
+        setTimeout(() => {
+          if (global.generateKey === null) return;
+          global.generateKey = null;
+          otherMessage(`Config is no longer available to be generated. Please restart to generate a new key.`);
+        }, 300000);
+      }
     });
   })();
 } catch (error) {

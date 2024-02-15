@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta property="og:description" content="ShareX-API | Made By Kathund - Open source and free to use at https://github.com/Kathund/ShareX-API" />
+  <meta name="description" content="ShareX-API | Made By Kathund - Open source and free to use at https://github.com/Kathund/ShareX-API" />
+  <meta property="og:url" content="https://github.com/Kathund/ShareX-API" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="canonical" href="https://github.com/Kathund/ShareX-AP" />
+  <link rel="icon" type="image/x-icon" href="../files/favicon.ico">
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta property="og:title" content="ShareX-API | Home" />
+  <meta property="og:site_name" content="ShareX-API" />
+  <link rel="stylesheet" href="../css/discord.css">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="theme-color" content="#52A396" />
+  <title>ShareX-API | Home</title>
+  <meta charset="UTF-8">
+</head>
+
+<body>
+  <main>
+    <div class="options">
+      <div class="inputs">
+        <div>
+          <div class="author">
+            <label for="author">Author:</label>
+            <input type="text" value="<%= data.author %>" name="author" id="authorInput" />
+          </div>
+          <div class="siteName">
+            <label for="siteName">Site Name:</label>
+            <input type="text" value="<%= data.siteName %>" name="siteName" id="siteNameInput" />
+          </div>
+          <div class="description">
+            <label for="description">Description:</label>
+            <input type="text" value="<%= data.description %>" name="description" id="descriptionInput" />
+          </div>
+        </div>
+        <div>
+          <div class="authorURL">
+            <label for="authorURL">Author URL:</label>
+            <input type="text" value="<%= data.authorURL %>" name="authorURL" id="authorURLInput" />
+          </div>
+          <div class="siteNameURL">
+            <label for="siteNameURL">Site Name URL:</label>
+            <input type="text" value="<%= data.siteNameURL %>" name="siteNameURL" id="siteNameURLInput" />
+          </div>
+          <div class="title">
+            <label for="title">Title:</label>
+            <input type="text" value="<%= data.title %>" name="title" id="titleInput" />
+          </div>
+        </div>
+      </div>
+      <div class="buttons">
+        <div>
+          <div class="randomColor">
+            <p>Random Color</p>
+            <div class="randomColorToggle">
+              <span class="randomColorSwitch"></span>
+            </div>
+          </div>
+          <div class="color">
+            <p>Color</p>
+            <input type="color" id="colorInput" name="color" value="<%= data.color %>">
+          </div>
+          <div class="timestamp">
+            <p>Timestamp</p>
+            <div class="timestampToggle">
+              <span class="timestampSwitch"></span>
+            </div>
+          </div>
+        </div>
+        <div>
+          <button onclick="saveData()" class="save">Save Changes</button>
+          <button onclick="resetToDefault()" class="reset">Reset to Default</button>
+          <button onclick="clearBoxes()" class="clear">Clear Boxes</button>
+        </div>
+      </div>
+    </div>
+  </main>
+  <script src="../js/discord.js" defer></script>
+</body>
+
+</html>

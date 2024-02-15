@@ -1,6 +1,6 @@
+import { url, key, allowConfigGen } from '../../config.json';
 import { Application, Request, Response } from 'express';
 import { apiMessage, errorMessage } from '../logger';
-import { url, key, allowConfigGen } from '../../config.json';
 
 export default (app: Application) => {
   app.get('/generate', async (req: Request, res: Response) => {
